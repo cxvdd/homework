@@ -1,0 +1,51 @@
+#include <iostream> 
+using namespace std;
+
+void conclusion(int arr[]) {
+	int size = 10;
+
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << " ";
+	}
+}
+
+void random(int arr[]) {
+	int size = 10;
+
+	for (int i = 0; i < size; i++) {
+		arr[i] = 10 + rand() % 90;
+	}
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	const int SIZE = 10;
+	int array1[SIZE]{};
+	int array2[SIZE];
+
+	int* pA = array1;
+	int* pB = array2;
+
+	random(pB);
+	conclusion(pB);
+
+	for (int i = 0; i < SIZE; i++) {
+		*(pA + i) = *(pB + i);
+	}
+	cout << endl;
+	conclusion(pA);
+
+	for (int i = 0; i < SIZE / 2; i++) {
+		swap(*(pA + i), *(pA + SIZE - i - 1));
+	}
+	cout << endl;
+	conclusion(pA);
+
+	for (int i = 0; i < SIZE / 2; i++) {
+		*(pB + i) = *(pA + SIZE - i - 1);
+	}
+	cout << endl;
+	vivod(pB);
+}
